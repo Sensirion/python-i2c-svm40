@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sensirion_i2c_svm40.device &mdash; sensirion-i2c-svm40 0.1.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sensirion-i2c-svm40
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sensirion-i2c-svm40</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>sensirion_i2c_svm40.device</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sensirion_i2c_svm40.device</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># (c) Copyright 2020 Sensirion AG, Switzerland</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">sensirion_i2c_driver</span> <span class="kn">import</span> <span class="n">I2cDevice</span>
+<span class="kn">from</span> <span class="nn">.commands</span> <span class="kn">import</span> <span class="n">Svm40I2cCmdGetSerialNumber</span><span class="p">,</span> <span class="n">Svm40I2cCmdDeviceReset</span><span class="p">,</span> \
+    <span class="n">Svm40I2cCmdGetVersion</span><span class="p">,</span> <span class="n">Svm40I2cCmdStartMeasurement</span><span class="p">,</span> \
+    <span class="n">Svm40I2cCmdStopMeasurement</span><span class="p">,</span> <span class="n">Svm40I2cCmdReadMeasuredValuesAsIntegers</span><span class="p">,</span> \
+    <span class="n">Svm40I2cCmdReadMeasuredValuesAsIntegersWithRaw</span>
+
+
+<div class="viewcode-block" id="Svm40I2cDevice"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice">[docs]</a><span class="k">class</span> <span class="nc">Svm40I2cDevice</span><span class="p">(</span><span class="n">I2cDevice</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    SVM40 I²C device class to allow executing I²C commands.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Svm40I2cDevice.__init__"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">connection</span><span class="p">,</span> <span class="n">slave_address</span><span class="o">=</span><span class="mh">0x6A</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructs a new SVM40 I²C device.</span>
+
+<span class="sd">        :param ~sensirion_i2c_driver.connection.I2cConnection connection:</span>
+<span class="sd">            The I²C connection to use for communication.</span>
+<span class="sd">        :param byte slave_address:</span>
+<span class="sd">            The I²C slave address, defaults to 0x6A.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Svm40I2cDevice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">slave_address</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Svm40I2cDevice.device_reset"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.device_reset">[docs]</a>    <span class="k">def</span> <span class="nf">device_reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Execute a device reset (reboot firmware, similar to power cycle).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Svm40I2cCmdDeviceReset</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Svm40I2cDevice.get_serial_number"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.get_serial_number">[docs]</a>    <span class="k">def</span> <span class="nf">get_serial_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the serial number of the device.</span>
+
+<span class="sd">        :return: The serial number as a hex formatted ASCII string.</span>
+<span class="sd">        :rtype: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Svm40I2cCmdGetSerialNumber</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Svm40I2cDevice.get_version"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.get_version">[docs]</a>    <span class="k">def</span> <span class="nf">get_version</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the version of the device firmware, hardware and SHDLC protocol.</span>
+
+<span class="sd">        :return: The device version.</span>
+<span class="sd">        :rtype: ~sensirion_i2c_svm40.response_types.Version</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Svm40I2cCmdGetVersion</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Svm40I2cDevice.start_measurement"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.start_measurement">[docs]</a>    <span class="k">def</span> <span class="nf">start_measurement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Starts continuous measurement in polling mode.</span>
+
+<span class="sd">        .. note:: This command is only available in idle mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Svm40I2cCmdStartMeasurement</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Svm40I2cDevice.stop_measurement"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.stop_measurement">[docs]</a>    <span class="k">def</span> <span class="nf">stop_measurement</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Leaves the measurement mode and returns to the idle mode.</span>
+
+<span class="sd">        .. note:: This command is only available in measurement mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Svm40I2cCmdStopMeasurement</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Svm40I2cDevice.read_measured_values"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.read_measured_values">[docs]</a>    <span class="k">def</span> <span class="nf">read_measured_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the new measurement results.</span>
+
+<span class="sd">        .. note:: This command is only available in measurement mode. The</span>
+<span class="sd">                  firmware updates the measurement values every second. Polling</span>
+<span class="sd">                  data with a faster sampling rate will return the same values.</span>
+<span class="sd">                  The first measurement is available 1 second after the start</span>
+<span class="sd">                  measurement command is issued. Any readout prior to this will</span>
+<span class="sd">                  return zero initialized values.</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">            The measured air quality, humidity and temperature.</span>
+
+<span class="sd">            - air_quality (:py:class:`~sensirion_i2c_svm40.response_types.AirQuality`) -</span>
+<span class="sd">              Air quality response object.</span>
+<span class="sd">            - humidity (:py:class:`~sensirion_i2c_svm40.response_types.Humidity`) -</span>
+<span class="sd">              Humidity response object.</span>
+<span class="sd">            - temperature (:py:class:`~sensirion_i2c_svm40.response_types.Temperature`) -</span>
+<span class="sd">              Temperature response object.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Svm40I2cCmdReadMeasuredValuesAsIntegers</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="Svm40I2cDevice.read_measured_values_raw"><a class="viewcode-back" href="../../api.html#sensirion_i2c_svm40.device.Svm40I2cDevice.read_measured_values_raw">[docs]</a>    <span class="k">def</span> <span class="nf">read_measured_values_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the new measurement results with raw values added.</span>
+
+<span class="sd">        .. note:: This command is only available in measurement mode. The</span>
+<span class="sd">                  firmware updates the measurement values every second. Polling</span>
+<span class="sd">                  data with a faster sampling rate will return the same values.</span>
+<span class="sd">                  The first measurement is available 1 second after the start</span>
+<span class="sd">                  measurement command is issued. Any readout prior to this will</span>
+<span class="sd">                  return zero initialized values.</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">            The measured air quality, humidity and temperature including the</span>
+<span class="sd">            raw values without algorithm compensation.</span>
+
+<span class="sd">            - air_quality (:py:class:`~sensirion_i2c_svm40.response_types.AirQuality`) -</span>
+<span class="sd">              Air quality response object.</span>
+<span class="sd">            - humidity (:py:class:`~sensirion_i2c_svm40.response_types.Humidity`) -</span>
+<span class="sd">              Humidity response object.</span>
+<span class="sd">            - temperature (:py:class:`~sensirion_i2c_svm40.response_types.Temperature`) -</span>
+<span class="sd">              Temperature response object.</span>
+<span class="sd">            - raw_voc_ticks (int) -</span>
+<span class="sd">              Raw VOC output ticks as read from the SGP sensor.</span>
+<span class="sd">            - raw_humidity (:py:class:`~sensirion_i2c_svm40.response_types.Humidity`) -</span>
+<span class="sd">              Humidity response object.</span>
+<span class="sd">            - raw_temperature (:py:class:`~sensirion_i2c_svm40.response_types.Temperature`) -</span>
+<span class="sd">              Temperature response object.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            tuple</span>
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">Svm40I2cCmdReadMeasuredValuesAsIntegersWithRaw</span><span class="p">())</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: master
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="device.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
