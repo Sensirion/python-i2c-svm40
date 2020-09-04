@@ -31,7 +31,7 @@ setup(
     description='I2C Driver for Sensirion SVM40 Evaluation Kit',
     license='BSD',
     keywords='sensirion i2c driver svm40',
-    url='http://developers.sensirion.com',
+    url='https://github.com/sensirion/python-i2c-svm40',
     packages=find_packages(exclude=['tests', 'tests.*']),
     long_description=long_description,
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
