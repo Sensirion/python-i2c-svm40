@@ -35,4 +35,17 @@ Version
 Commands
 --------
 
-.. automodule:: sensirion_i2c_svm40.commands
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetSerialNumber
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdDeviceReset
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStartContinuousMeasurement
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStopMeasurement
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmTuningParameters
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmTuningParameters
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmState
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmState
+.. autoclass:: sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStoreNvData
+.. autoclass:: sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion
+.. autoclass:: sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues
+.. autoclass:: sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw
+.. autoclass:: sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements
+.. autoclass:: sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements
