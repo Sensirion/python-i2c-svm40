@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sensirion_i2c_svm40.commands.wrapped &mdash; sensirion-i2c-svm40 0.1.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> sensirion-i2c-svm40
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">sensirion-i2c-svm40</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>sensirion_i2c_svm40.commands.wrapped</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for sensirion_i2c_svm40.commands.wrapped</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># (c) Copyright 2020 Sensirion AG, Switzerland</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">.generated</span> <span class="kn">import</span> <span class="n">Svm40I2cCmdGetVersion</span> <span class="k">as</span> <span class="n">GetVersionGenerated</span>
+<span class="kn">from</span> <span class="nn">.generated</span> <span class="kn">import</span> <span class="n">Svm40I2cCmdReadMeasuredValuesAsIntegers</span> <span class="k">as</span> \
+    <span class="n">ReadMeasuredValuesAsIntGenerated</span>
+<span class="kn">from</span> <span class="nn">.generated</span> <span class="kn">import</span> \
+    <span class="n">Svm40I2cCmdReadMeasuredValuesAsIntegersWithRawParameters</span> <span class="k">as</span> \
+    <span class="n">ReadMeasuredValuesAsIntRawGenerated</span>
+<span class="kn">from</span> <span class="nn">.generated</span> <span class="kn">import</span> <span class="n">Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements</span> <span class="k">as</span> \
+    <span class="n">GetTOffsetGenerated</span>
+<span class="kn">from</span> <span class="nn">.generated</span> <span class="kn">import</span> <span class="n">Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements</span> <span class="k">as</span> \
+    <span class="n">SetTOffsetGenerated</span>
+<span class="kn">from</span> <span class="nn">..version_types</span> <span class="kn">import</span> <span class="n">FirmwareVersion</span><span class="p">,</span> <span class="n">HardwareVersion</span><span class="p">,</span> \
+    <span class="n">ProtocolVersion</span><span class="p">,</span> <span class="n">Version</span>
+<span class="kn">from</span> <span class="nn">..response_types</span> <span class="kn">import</span> <span class="n">AirQuality</span><span class="p">,</span> <span class="n">Humidity</span><span class="p">,</span> <span class="n">Temperature</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Svm40I2cCmdGetVersion"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion">[docs]</a><span class="k">class</span> <span class="nc">Svm40I2cCmdGetVersion</span><span class="p">(</span><span class="n">GetVersionGenerated</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Version I²C Command</span>
+
+<span class="sd">    Gets the version information for the hardware, firmware and protocol.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Svm40I2cCmdGetVersion.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Svm40I2cCmdGetVersion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Svm40I2cCmdGetVersion.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion.interpret_response">[docs]</a>    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the CRCs of the received data from the device and returns</span>
+<span class="sd">        the interpreted data.</span>
+
+<span class="sd">        :param bytes data: Received raw bytes from the read operation.</span>
+<span class="sd">        :return: The device version as a Version object.</span>
+<span class="sd">        :rtype: ~sensirion_i2c_svm40.version_types.Version</span>
+<span class="sd">        :raise ~sensirion_i2c_driver.errors.I2cChecksumError:</span>
+<span class="sd">            If a received CRC was wrong.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">firmware_major</span><span class="p">,</span> <span class="n">firmware_minor</span><span class="p">,</span> <span class="n">firmware_debug</span><span class="p">,</span> <span class="n">hardware_major</span><span class="p">,</span> \
+            <span class="n">hardware_minor</span><span class="p">,</span> <span class="n">protocol_major</span><span class="p">,</span> <span class="n">protocol_minor</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> \
+            <span class="n">GetVersionGenerated</span><span class="o">.</span><span class="n">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Version</span><span class="p">(</span>
+            <span class="n">firmware</span><span class="o">=</span><span class="n">FirmwareVersion</span><span class="p">(</span>
+                <span class="n">major</span><span class="o">=</span><span class="n">firmware_major</span><span class="p">,</span>
+                <span class="n">minor</span><span class="o">=</span><span class="n">firmware_minor</span><span class="p">,</span>
+                <span class="n">debug</span><span class="o">=</span><span class="n">firmware_debug</span>
+            <span class="p">),</span>
+            <span class="n">hardware</span><span class="o">=</span><span class="n">HardwareVersion</span><span class="p">(</span>
+                <span class="n">major</span><span class="o">=</span><span class="n">hardware_major</span><span class="p">,</span>
+                <span class="n">minor</span><span class="o">=</span><span class="n">hardware_minor</span>
+            <span class="p">),</span>
+            <span class="n">protocol</span><span class="o">=</span><span class="n">ProtocolVersion</span><span class="p">(</span>
+                <span class="n">major</span><span class="o">=</span><span class="n">protocol_major</span><span class="p">,</span>
+                <span class="n">minor</span><span class="o">=</span><span class="n">protocol_minor</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements">[docs]</a><span class="k">class</span> <span class="nc">Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements</span><span class="p">(</span><span class="n">GetTOffsetGenerated</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get Temperature Offset For Rht Measurements I²C Command</span>
+
+<span class="sd">    Gets the T-Offset for the temperature compensation of the RHT algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span> \
+            <span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.interpret_response">[docs]</a>    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the CRCs of the received data from the device and returns</span>
+<span class="sd">        the interpreted data.</span>
+
+<span class="sd">        :param bytes data:</span>
+<span class="sd">            Received raw bytes from the read operation.</span>
+<span class="sd">        :return: Temperature offset in degrees celsius.</span>
+<span class="sd">        :rtype: float</span>
+<span class="sd">        :raise ~sensirion_i2c_driver.errors.I2cChecksumError:</span>
+<span class="sd">            If a received CRC was wrong.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">GetTOffsetGenerated</span><span class="o">.</span><span class="n">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="o">/</span> <span class="mf">200.</span>  <span class="c1"># scaled int16</span></div></div>
+
+
+<div class="viewcode-block" id="Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements">[docs]</a><span class="k">class</span> <span class="nc">Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements</span><span class="p">(</span><span class="n">SetTOffsetGenerated</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set Temperature Offset For Rht Measurements I²C Command</span>
+
+<span class="sd">    Sets the T-Offset for the temperature compensation of the RHT algorithm.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t_offset</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+
+<span class="sd">        :param float t_offset: Temperature offset in degrees celsius.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span> \
+            <span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">t_offset</span> <span class="o">*</span> <span class="mi">200</span><span class="p">)))</span>  <span class="c1"># scaled int16</span></div></div>
+
+
+<div class="viewcode-block" id="Svm40I2cCmdReadMeasuredValues"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues">[docs]</a><span class="k">class</span> <span class="nc">Svm40I2cCmdReadMeasuredValues</span><span class="p">(</span><span class="n">ReadMeasuredValuesAsIntGenerated</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the new measurement results.</span>
+
+<span class="sd">    .. note:: This command is only available in measurement mode. The firmware</span>
+<span class="sd">              updates the measurement values every second. Polling data with a</span>
+<span class="sd">              faster sampling rate will return the same values. The first</span>
+<span class="sd">              measurement is available 1 second after the start measurement</span>
+<span class="sd">              command is issued. Any readout prior to this will return zero</span>
+<span class="sd">              initialized values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Svm40I2cCmdReadMeasuredValues.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Svm40I2cCmdReadMeasuredValues</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Svm40I2cCmdReadMeasuredValues.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues.interpret_response">[docs]</a>    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the CRCs of the received data from the device and returns</span>
+<span class="sd">        the interpreted data.</span>
+
+<span class="sd">        :param bytes data:</span>
+<span class="sd">            Received raw bytes from the read operation.</span>
+<span class="sd">        :return:</span>
+<span class="sd">            The measured air quality, humidity and temperature.</span>
+
+<span class="sd">            - air_quality (:py:class:`~sensirion_i2c_svm40.response_types.AirQuality`) -</span>
+<span class="sd">              Air quality response object.</span>
+<span class="sd">            - humidity (:py:class:`~sensirion_i2c_svm40.response_types.Humidity`) -</span>
+<span class="sd">              Humidity response object.</span>
+<span class="sd">            - temperature (:py:class:`~sensirion_i2c_svm40.response_types.Temperature`) -</span>
+<span class="sd">              Temperature response object.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            tuple</span>
+<span class="sd">        :raise ~sensirion_i2c_driver.errors.I2cChecksumError:</span>
+<span class="sd">            If a received CRC was wrong.</span>
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+        <span class="n">voc_index</span><span class="p">,</span> <span class="n">humidity</span><span class="p">,</span> <span class="n">temperature</span> <span class="o">=</span> \
+            <span class="n">ReadMeasuredValuesAsIntGenerated</span><span class="o">.</span><span class="n">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">AirQuality</span><span class="p">(</span><span class="n">voc_index</span><span class="p">),</span> <span class="n">Humidity</span><span class="p">(</span><span class="n">humidity</span><span class="p">),</span> \
+            <span class="n">Temperature</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Svm40I2cCmdReadMeasuredValuesRaw"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw">[docs]</a><span class="k">class</span> <span class="nc">Svm40I2cCmdReadMeasuredValuesRaw</span><span class="p">(</span><span class="n">ReadMeasuredValuesAsIntRawGenerated</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Returns the new measurement results with raw values added.</span>
+
+<span class="sd">    .. note:: This command is only available in measurement mode. The firmware</span>
+<span class="sd">              updates the measurement values every second. Polling data with a</span>
+<span class="sd">              faster sampling rate will return the same values. The first</span>
+<span class="sd">              measurement is available 1 second after the start measurement</span>
+<span class="sd">              command is issued. Any readout prior to this will return zero</span>
+<span class="sd">              initialized values.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Svm40I2cCmdReadMeasuredValuesRaw.__init__"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Constructor.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Svm40I2cCmdReadMeasuredValuesRaw</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Svm40I2cCmdReadMeasuredValuesRaw.interpret_response"><a class="viewcode-back" href="../../../api.html#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw.interpret_response">[docs]</a>    <span class="k">def</span> <span class="nf">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Validates the CRCs of the received data from the device and returns</span>
+<span class="sd">        the interpreted data.</span>
+
+<span class="sd">        :param bytes data:</span>
+<span class="sd">            Received raw bytes from the read operation.</span>
+<span class="sd">        :return:</span>
+<span class="sd">            The measured air quality, humidity and temperature including the</span>
+<span class="sd">            raw values without algorithm compensation.</span>
+
+<span class="sd">            - air_quality (:py:class:`~sensirion_i2c_svm40.response_types.AirQuality`) -</span>
+<span class="sd">              Air quality response object.</span>
+<span class="sd">            - humidity (:py:class:`~sensirion_i2c_svm40.response_types.Humidity`) -</span>
+<span class="sd">              Humidity response object.</span>
+<span class="sd">            - temperature (:py:class:`~sensirion_i2c_svm40.response_types.Temperature`) -</span>
+<span class="sd">              Temperature response object.</span>
+<span class="sd">            - raw_voc_ticks (int) -</span>
+<span class="sd">              Raw VOC output ticks as read from the SGP sensor.</span>
+<span class="sd">            - raw_humidity (:py:class:`~sensirion_i2c_svm40.response_types.Humidity`) -</span>
+<span class="sd">              Humidity response object.</span>
+<span class="sd">            - raw_temperature (:py:class:`~sensirion_i2c_svm40.response_types.Temperature`) -</span>
+<span class="sd">              Temperature response object.</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">            tuple</span>
+<span class="sd">        :raise ~sensirion_i2c_driver.errors.I2cChecksumError:</span>
+<span class="sd">            If a received CRC was wrong.</span>
+<span class="sd">        &quot;&quot;&quot;</span>  <span class="c1"># noqa: E501</span>
+
+        <span class="n">voc_index</span><span class="p">,</span> <span class="n">humidity</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> \
+            <span class="n">raw_voc_ticks</span><span class="p">,</span> <span class="n">raw_humidity</span><span class="p">,</span> <span class="n">raw_temperature</span> <span class="o">=</span> \
+            <span class="n">ReadMeasuredValuesAsIntRawGenerated</span><span class="o">.</span><span class="n">interpret_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">AirQuality</span><span class="p">(</span><span class="n">voc_index</span><span class="p">),</span> <span class="n">Humidity</span><span class="p">(</span><span class="n">humidity</span><span class="p">),</span> \
+            <span class="n">Temperature</span><span class="p">(</span><span class="n">temperature</span><span class="p">),</span> <span class="n">raw_voc_ticks</span><span class="p">,</span> <span class="n">Humidity</span><span class="p">(</span><span class="n">raw_humidity</span><span class="p">),</span> \
+            <span class="n">Temperature</span><span class="p">(</span><span class="n">raw_temperature</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: 0.1.1
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../../../../0.1.0/index.html">0.1.0</a></dd>
+            <dd><a href="wrapped.html">0.1.1</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../../../../master/index.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

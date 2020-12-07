@@ -1,0 +1,1415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Reference &mdash; sensirion-i2c-svm40 0.1.1 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/banner.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Quick Start" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> sensirion-i2c-svm40
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick Start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-sensirion_i2c_svm40.device">Svm40I2cDevice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#response-data-types">Response Data Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#air-quality">Air Quality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#humidity">Humidity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature">Temperature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-sensirion_i2c_svm40.version_types">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#commands">Commands</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sensirion-i2c-svm40</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API Reference</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-sensirion_i2c_svm40.device">
+<span id="svm40i2cdevice"></span><h2>Svm40I2cDevice<a class="headerlink" href="#module-sensirion_i2c_svm40.device" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.device.</code><code class="descname">Svm40I2cDevice</code><span class="sig-paren">(</span><em>connection</em>, <em>slave_address=106</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>SVM40 I²C device class to allow executing I²C commands.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>connection</em>, <em>slave_address=106</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a new SVM40 I²C device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>connection</strong> (<a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.connection.I2cConnection" title="(in Sensirion I²C Python Driver v1.0.1)"><em>I2cConnection</em></a>) – The I²C connection to use for communication.</li>
+<li><strong>slave_address</strong> (<em>byte</em>) – The I²C slave address, defaults to 0x6A.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.device_reset">
+<code class="descname">device_reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.device_reset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.device_reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute a device reset (reboot firmware, similar to power cycle).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.get_serial_number">
+<code class="descname">get_serial_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.get_serial_number"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.get_serial_number" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the serial number of the device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The serial number as a hex formatted ASCII string.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.get_version">
+<code class="descname">get_version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.get_version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.get_version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the version of the device firmware, hardware and SHDLC protocol.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The device version.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">Version</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.get_compensation_temperature_offset">
+<code class="descname">get_compensation_temperature_offset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.get_compensation_temperature_offset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.get_compensation_temperature_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the temperature offset for RHT measurements.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Temperature offset in degrees celsius.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.set_compensation_temperature_offset">
+<code class="descname">set_compensation_temperature_offset</code><span class="sig-paren">(</span><em>t_offset</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.set_compensation_temperature_offset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.set_compensation_temperature_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the temperature offset for RHT measurements.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Execute the command
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">store_nv_data()</span></code> command
+after writing the parameter to store it in the non-volatile memory
+of the device otherwise the parameter will be reset upton a device
+reset.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>t_offset</strong> (<em>float</em>) – Temperature offset in degrees celsius.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.get_voc_tuning_parameters">
+<code class="descname">get_voc_tuning_parameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.get_voc_tuning_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.get_voc_tuning_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the currently set parameters for customizing the VOC algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li>voc_index_offset (int) -
+VOC index representing typical (average) conditions. The default
+value is 100.</li>
+<li>learning_time_hours (int) -
+Time constant of long-term estimator in hours. Past events will
+be forgotten after about twice the learning time. The default
+value is 12 hours.</li>
+<li>gating_max_duration_minutes (int) -
+Maximum duration of gating in minutes (freeze of estimator during
+high VOC index signal). Zero disables the gating. The default
+value is 180 minutes.</li>
+<li>std_initial (int) -
+Initial estimate for standard deviation. Lower value boosts
+events during initial learning period, but may result in larger
+device-to-device variations. The default value is 50.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.set_voc_tuning_parameters">
+<code class="descname">set_voc_tuning_parameters</code><span class="sig-paren">(</span><em>voc_index_offset</em>, <em>learning_time_hours</em>, <em>gating_max_duration_minutes</em>, <em>std_initial</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.set_voc_tuning_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.set_voc_tuning_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets parameters to customize the VOC algorithm. This command is only
+available in idle mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Execute the command
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">store_nv_data()</span></code> after
+writing the parameter to store it in the non-volatile memory
+of the device otherwise the parameter will be reset upton a
+device reset.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>voc_index_offset</strong> (<em>int</em>) – VOC index representing typical (average) conditions. The default
+value is 100.</li>
+<li><strong>learning_time_hours</strong> (<em>int</em>) – Time constant of long-term estimator in hours. Past events will be
+forgotten after about twice the learning time. The default value is
+12 hours.</li>
+<li><strong>gating_max_duration_minutes</strong> (<em>int</em>) – Maximum duration of gating in minutes (freeze of estimator during
+high VOC index signal). Set to zero to disable the gating. The
+default value is 180 minutes.</li>
+<li><strong>std_initial</strong> (<em>int</em>) – Initial estimate for standard deviation. Lower value boosts events
+during initial learning period, but may result in larger
+device-to-device variations. The default value is 50.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.store_nv_data">
+<code class="descname">store_nv_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.store_nv_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.store_nv_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stores all customer engine parameters to the non-volatile memory.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.get_voc_state">
+<code class="descname">get_voc_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.get_voc_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.get_voc_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the current VOC algorithm state. Retrieved values can be used to
+set the VOC algorithm state to resume operation after a short
+interruption, skipping initial learning phase. This command is only
+available during measurement mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This feature can only be used after at least 3 hours of
+continuous operation.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Current VOC algorithm state.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list(int)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.set_voc_state">
+<code class="descname">set_voc_state</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.set_voc_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.set_voc_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set previously retrieved VOC algorithm state to resume operation after
+a short interruption, skipping initial learning phase. This command is
+only available in idle mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This feature should not be used after interruptions of more
+than 10 minutes.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>state</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – Current VOC algorithm state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.start_measurement">
+<code class="descname">start_measurement</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.start_measurement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.start_measurement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts continuous measurement in polling mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in idle mode.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.stop_measurement">
+<code class="descname">stop_measurement</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.stop_measurement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.stop_measurement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Leaves the measurement mode and returns to the idle mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in measurement mode.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.read_measured_values">
+<code class="descname">read_measured_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.read_measured_values"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.read_measured_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the new measurement results.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in measurement mode. The
+firmware updates the measurement values every second. Polling
+data with a faster sampling rate will return the same values.
+The first measurement is available 1 second after the start
+measurement command is issued. Any readout prior to this will
+return zero initialized values.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The measured air quality, humidity and temperature.<ul class="simple">
+<li>air_quality (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.AirQuality" title="sensirion_i2c_svm40.response_types.AirQuality"><code class="xref py py-class docutils literal notranslate"><span class="pre">AirQuality</span></code></a>) -
+Air quality response object.</li>
+<li>humidity (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity" title="sensirion_i2c_svm40.response_types.Humidity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Humidity</span></code></a>) -
+Humidity response object.</li>
+<li>temperature (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature" title="sensirion_i2c_svm40.response_types.Temperature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Temperature</span></code></a>) -
+Temperature response object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.read_measured_values_raw">
+<code class="descname">read_measured_values_raw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/device.html#Svm40I2cDevice.read_measured_values_raw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.read_measured_values_raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the new measurement results with raw values added.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in measurement mode. The
+firmware updates the measurement values every second. Polling
+data with a faster sampling rate will return the same values.
+The first measurement is available 1 second after the start
+measurement command is issued. Any readout prior to this will
+return zero initialized values.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The measured air quality, humidity and temperature including the
+raw values without algorithm compensation.<ul class="simple">
+<li>air_quality (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.AirQuality" title="sensirion_i2c_svm40.response_types.AirQuality"><code class="xref py py-class docutils literal notranslate"><span class="pre">AirQuality</span></code></a>) -
+Air quality response object.</li>
+<li>humidity (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity" title="sensirion_i2c_svm40.response_types.Humidity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Humidity</span></code></a>) -
+Humidity response object.</li>
+<li>temperature (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature" title="sensirion_i2c_svm40.response_types.Temperature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Temperature</span></code></a>) -
+Temperature response object.</li>
+<li>raw_voc_ticks (int) -
+Raw VOC output ticks as read from the SGP sensor.</li>
+<li>raw_humidity (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity" title="sensirion_i2c_svm40.response_types.Humidity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Humidity</span></code></a>) -
+Humidity response object.</li>
+<li>raw_temperature (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature" title="sensirion_i2c_svm40.response_types.Temperature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Temperature</span></code></a>) -
+Temperature response object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.connection">
+<code class="descname">connection</code><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the used I²C connection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The used I²C connection.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.connection.I2cConnection" title="(in Sensirion I²C Python Driver v1.0.1)">I2cConnection</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.execute">
+<code class="descname">execute</code><span class="sig-paren">(</span><em>command</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.execute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute an I²C command on this device.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>command</strong> (<a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.command.I2cCommand" title="(in Sensirion I²C Python Driver v1.0.1)"><em>I2cCommand</em></a>) – The command to be executed.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The interpreted response of the executed command.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Depends on the executed command.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.device.Svm40I2cDevice.slave_address">
+<code class="descname">slave_address</code><a class="headerlink" href="#sensirion_i2c_svm40.device.Svm40I2cDevice.slave_address" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the I²C slave address.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The I²C slave address.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">byte</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="response-data-types">
+<h2>Response Data Types<a class="headerlink" href="#response-data-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="air-quality">
+<h3>Air Quality<a class="headerlink" href="#air-quality" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="sensirion_i2c_svm40.response_types.AirQuality">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.response_types.</code><code class="descname">AirQuality</code><span class="sig-paren">(</span><em>ticks</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/response_types.html#AirQuality"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.response_types.AirQuality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a measurement response for the air quality.</p>
+<p>With the <a class="reference internal" href="#sensirion_i2c_svm40.response_types.AirQuality.ticks" title="sensirion_i2c_svm40.response_types.AirQuality.ticks"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ticks</span></code></a> you can access the raw data as received from the
+device. For the converted value the <a class="reference internal" href="#sensirion_i2c_svm40.response_types.AirQuality.voc_index" title="sensirion_i2c_svm40.response_types.AirQuality.voc_index"><code class="xref py py-attr docutils literal notranslate"><span class="pre">voc_index</span></code></a> attribute is
+available.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.response_types.AirQuality.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>ticks</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/response_types.html#AirQuality.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.response_types.AirQuality.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance from the received raw data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ticks</strong> (<em>int</em>) – The read ticks as received from the device.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.response_types.AirQuality.ticks">
+<code class="descname">ticks</code><a class="headerlink" href="#sensirion_i2c_svm40.response_types.AirQuality.ticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ticks (int) as received from the device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.response_types.AirQuality.voc_index">
+<code class="descname">voc_index</code><a class="headerlink" href="#sensirion_i2c_svm40.response_types.AirQuality.voc_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>The converted VOC index.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="humidity">
+<h3>Humidity<a class="headerlink" href="#humidity" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="sensirion_i2c_svm40.response_types.Humidity">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.response_types.</code><code class="descname">Humidity</code><span class="sig-paren">(</span><em>ticks</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/response_types.html#Humidity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Humidity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a measurement response for the humidity.</p>
+<p>With the <a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity.ticks" title="sensirion_i2c_svm40.response_types.Humidity.ticks"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ticks</span></code></a> you can access the raw data as received from the
+device. For the converted value the <a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity.percent_rh" title="sensirion_i2c_svm40.response_types.Humidity.percent_rh"><code class="xref py py-attr docutils literal notranslate"><span class="pre">percent_rh</span></code></a> attribute is
+available.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.response_types.Humidity.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>ticks</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/response_types.html#Humidity.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Humidity.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance from the received raw data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ticks</strong> (<em>int</em>) – The read ticks as received from the device.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.response_types.Humidity.ticks">
+<code class="descname">ticks</code><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Humidity.ticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ticks (int) as received from the device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.response_types.Humidity.percent_rh">
+<code class="descname">percent_rh</code><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Humidity.percent_rh" title="Permalink to this definition">¶</a></dt>
+<dd><p>The converted humidity in %RH.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="temperature">
+<h3>Temperature<a class="headerlink" href="#temperature" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="sensirion_i2c_svm40.response_types.Temperature">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.response_types.</code><code class="descname">Temperature</code><span class="sig-paren">(</span><em>ticks</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/response_types.html#Temperature"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Temperature" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a measurement response for the temperature.</p>
+<p>With the <a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature.ticks" title="sensirion_i2c_svm40.response_types.Temperature.ticks"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ticks</span></code></a> you can access the raw data as received from the
+device. For the converted values you can choose between
+<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature.degrees_celsius" title="sensirion_i2c_svm40.response_types.Temperature.degrees_celsius"><code class="xref py py-attr docutils literal notranslate"><span class="pre">degrees_celsius</span></code></a> and <a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature.degrees_fahrenheit" title="sensirion_i2c_svm40.response_types.Temperature.degrees_fahrenheit"><code class="xref py py-attr docutils literal notranslate"><span class="pre">degrees_fahrenheit</span></code></a>.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.response_types.Temperature.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>ticks</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/response_types.html#Temperature.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Temperature.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates an instance from the received raw data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ticks</strong> (<em>int</em>) – The read ticks as received from the device.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.response_types.Temperature.ticks">
+<code class="descname">ticks</code><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Temperature.ticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ticks (int) as received from the device.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.response_types.Temperature.degrees_celsius">
+<code class="descname">degrees_celsius</code><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Temperature.degrees_celsius" title="Permalink to this definition">¶</a></dt>
+<dd><p>The converted temperature in °C.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="sensirion_i2c_svm40.response_types.Temperature.degrees_fahrenheit">
+<code class="descname">degrees_fahrenheit</code><a class="headerlink" href="#sensirion_i2c_svm40.response_types.Temperature.degrees_fahrenheit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The converted temperature in °F.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-sensirion_i2c_svm40.version_types">
+<span id="version"></span><h3>Version<a class="headerlink" href="#module-sensirion_i2c_svm40.version_types" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="sensirion_i2c_svm40.version_types.FirmwareVersion">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.version_types.</code><code class="descname">FirmwareVersion</code><span class="sig-paren">(</span><em>major</em>, <em>minor</em>, <em>debug</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#FirmwareVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.FirmwareVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing the firmware version of a device.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.version_types.FirmwareVersion.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>major</em>, <em>minor</em>, <em>debug</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#FirmwareVersion.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.FirmwareVersion.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>major</strong> (<em>byte</em>) – Major version (0..255).</li>
+<li><strong>minor</strong> (<em>byte</em>) – Minor version (0..99).</li>
+<li><strong>debug</strong> (<em>bool</em>) – Debug flag (False for official releases).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.version_types.HardwareVersion">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.version_types.</code><code class="descname">HardwareVersion</code><span class="sig-paren">(</span><em>major</em>, <em>minor</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#HardwareVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.HardwareVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing the hardware version of a device.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.version_types.HardwareVersion.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>major</em>, <em>minor</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#HardwareVersion.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.HardwareVersion.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>major</strong> (<em>byte</em>) – Major version (0..255).</li>
+<li><strong>minor</strong> (<em>byte</em>) – Minor version (0..99).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.version_types.ProtocolVersion">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.version_types.</code><code class="descname">ProtocolVersion</code><span class="sig-paren">(</span><em>major</em>, <em>minor</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#ProtocolVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.ProtocolVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing the I2C protocol version of an I2C device.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.version_types.ProtocolVersion.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>major</em>, <em>minor</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#ProtocolVersion.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.ProtocolVersion.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>major</strong> (<em>byte</em>) – Major version (0..255).</li>
+<li><strong>minor</strong> (<em>byte</em>) – Minor version (0..99).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.version_types.Version">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.version_types.</code><code class="descname">Version</code><span class="sig-paren">(</span><em>firmware</em>, <em>hardware</em>, <em>protocol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#Version"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.Version" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class representing all version numbers of an I2C device. This is used for
+the “Get Version” command.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.version_types.Version.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>firmware</em>, <em>hardware</em>, <em>protocol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/version_types.html#Version.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.version_types.Version.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>firmware</strong> (<a class="reference internal" href="#sensirion_i2c_svm40.version_types.FirmwareVersion" title="sensirion_i2c_svm40.version_types.FirmwareVersion"><em>FirmwareVersion</em></a>) – Firmware version.</li>
+<li><strong>hardware</strong> (<a class="reference internal" href="#sensirion_i2c_svm40.version_types.HardwareVersion" title="sensirion_i2c_svm40.version_types.HardwareVersion"><em>HardwareVersion</em></a>) – Hardware version.</li>
+<li><strong>protocol</strong> (<a class="reference internal" href="#sensirion_i2c_svm40.version_types.ProtocolVersion" title="sensirion_i2c_svm40.version_types.ProtocolVersion"><em>ProtocolVersion</em></a>) – SHDLC protocol version.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetSerialNumber">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdGetSerialNumber</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetSerialNumber"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetSerialNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Serial Number I²C Command</p>
+<p>Gets the serial number from the device.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetSerialNumber.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetSerialNumber.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetSerialNumber.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetSerialNumber.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetSerialNumber.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetSerialNumber.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the interpreted data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Ascii string containing the serial number. The string has the
+null-termination character included.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdDeviceReset">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdDeviceReset</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdDeviceReset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdDeviceReset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device Reset I²C Command</p>
+<p>Executs a reset on the device.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The device will reply before executing the reset.</p>
+</div>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdDeviceReset.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdDeviceReset.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdDeviceReset.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdDeviceReset.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdDeviceReset.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the data with all CRCs removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received bytes, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStartContinuousMeasurement">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdStartContinuousMeasurement</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdStartContinuousMeasurement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStartContinuousMeasurement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start Continuous Measurement I²C Command</p>
+<p>Starts continuous measurement in polling mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in idle mode.</p>
+</div>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStartContinuousMeasurement.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdStartContinuousMeasurement.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStartContinuousMeasurement.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStartContinuousMeasurement.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStartContinuousMeasurement.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the data with all CRCs removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received bytes, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStopMeasurement">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdStopMeasurement</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdStopMeasurement"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStopMeasurement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stop Measurement I²C Command</p>
+<p>Stops the measurement mode and returns to idle mode.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in measurement mode.</p>
+</div>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStopMeasurement.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdStopMeasurement.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStopMeasurement.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStopMeasurement.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStopMeasurement.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the data with all CRCs removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received bytes, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmTuningParameters">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdGetVocAlgorithmTuningParameters</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetVocAlgorithmTuningParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmTuningParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Voc Algorithm Tuning Parameters I²C Command</p>
+<p>Gets the currently set parameters for customizing the VOC algorithm</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmTuningParameters.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetVocAlgorithmTuningParameters.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmTuningParameters.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmTuningParameters.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetVocAlgorithmTuningParameters.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmTuningParameters.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the interpreted data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li>voc_index_offset (int) -
+VOC index representing typical (average) conditions. The default
+value is 100.</li>
+<li>learning_time_hours (int) -
+Time constant of long-term estimator in hours. Past events will
+be forgotten after about twice the learning time. The default
+value is 12 hours.</li>
+<li>gating_max_duration_minutes (int) -
+Maximum duration of gating in minutes (freeze of estimator during
+high VOC index signal). Zero disables the gating. The default
+value is 180 minutes.</li>
+<li>std_initial (int) -
+Initial estimate for standard deviation. Lower value boosts
+events during initial learning period, but may result in larger
+device-to-device variations. The default value is 50.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmTuningParameters">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdSetVocAlgorithmTuningParameters</code><span class="sig-paren">(</span><em>voc_index_offset</em>, <em>learning_time_hours</em>, <em>gating_max_duration_minutes</em>, <em>std_initial</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdSetVocAlgorithmTuningParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmTuningParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set Voc Algorithm Tuning Parameters I²C Command</p>
+<p>Sets the parameters to customize the VOC algorithm. This command is only
+available in idle mode.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmTuningParameters.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>voc_index_offset</em>, <em>learning_time_hours</em>, <em>gating_max_duration_minutes</em>, <em>std_initial</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdSetVocAlgorithmTuningParameters.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmTuningParameters.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>voc_index_offset</strong> (<em>int</em>) – VOC index representing typical (average) conditions. The default
+value is 100.</li>
+<li><strong>learning_time_hours</strong> (<em>int</em>) – Time constant of long-term estimator in hours. Past events will be
+forgotten after about twice the learning time. The default value is
+12 hours.</li>
+<li><strong>gating_max_duration_minutes</strong> (<em>int</em>) – Maximum duration of gating in minutes (freeze of estimator during
+high VOC index signal). Set to zero to disable the gating. The
+default value is 180 minutes.</li>
+<li><strong>std_initial</strong> (<em>int</em>) – Initial estimate for standard deviation. Lower value boosts events
+during initial learning period, but may result in larger
+device-to-device variations. The default value is 50.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmTuningParameters.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmTuningParameters.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the data with all CRCs removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received bytes, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmState">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdGetVocAlgorithmState</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetVocAlgorithmState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Voc Algorithm State I²C Command</p>
+<p>Gets the current VOC algorithm state.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmState.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetVocAlgorithmState.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmState.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmState.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdGetVocAlgorithmState.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdGetVocAlgorithmState.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the interpreted data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Current VOC algorithm state.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list(int)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmState">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdSetVocAlgorithmState</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdSetVocAlgorithmState"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set Voc Algorithm State I²C Command</p>
+<p>Sets the VOC algorithm state. This command is only available in idle mode.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmState.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdSetVocAlgorithmState.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmState.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>state</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – Current VOC algorithm state.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmState.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdSetVocAlgorithmState.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the data with all CRCs removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received bytes, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStoreNvData">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.generated.</code><code class="descname">Svm40I2cCmdStoreNvData</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdStoreNvData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStoreNvData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Store Nv Data I²C Command</p>
+<p>Stores all algorithm parameters to the non-volatile memory.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStoreNvData.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/generated.html#Svm40I2cCmdStoreNvData.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStoreNvData.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStoreNvData.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.commands.generated.Svm40I2cCmdStoreNvData.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the data with all CRCs removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received bytes, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.wrapped.</code><code class="descname">Svm40I2cCmdGetVersion</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdGetVersion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Version I²C Command</p>
+<p>Gets the version information for the hardware, firmware and protocol.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdGetVersion.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdGetVersion.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetVersion.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the interpreted data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The device version as a Version object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#sensirion_i2c_svm40.version_types.Version" title="sensirion_i2c_svm40.version_types.Version">Version</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.wrapped.</code><code class="descname">Svm40I2cCmdReadMeasuredValues</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdReadMeasuredValues"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the new measurement results.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in measurement mode. The firmware
+updates the measurement values every second. Polling data with a
+faster sampling rate will return the same values. The first
+measurement is available 1 second after the start measurement
+command is issued. Any readout prior to this will return zero
+initialized values.</p>
+</div>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdReadMeasuredValues.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdReadMeasuredValues.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValues.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the interpreted data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The measured air quality, humidity and temperature.<ul class="simple">
+<li>air_quality (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.AirQuality" title="sensirion_i2c_svm40.response_types.AirQuality"><code class="xref py py-class docutils literal notranslate"><span class="pre">AirQuality</span></code></a>) -
+Air quality response object.</li>
+<li>humidity (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity" title="sensirion_i2c_svm40.response_types.Humidity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Humidity</span></code></a>) -
+Humidity response object.</li>
+<li>temperature (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature" title="sensirion_i2c_svm40.response_types.Temperature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Temperature</span></code></a>) -
+Temperature response object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.wrapped.</code><code class="descname">Svm40I2cCmdReadMeasuredValuesRaw</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdReadMeasuredValuesRaw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the new measurement results with raw values added.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command is only available in measurement mode. The firmware
+updates the measurement values every second. Polling data with a
+faster sampling rate will return the same values. The first
+measurement is available 1 second after the start measurement
+command is issued. Any readout prior to this will return zero
+initialized values.</p>
+</div>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdReadMeasuredValuesRaw.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdReadMeasuredValuesRaw.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdReadMeasuredValuesRaw.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the interpreted data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The measured air quality, humidity and temperature including the
+raw values without algorithm compensation.<ul class="simple">
+<li>air_quality (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.AirQuality" title="sensirion_i2c_svm40.response_types.AirQuality"><code class="xref py py-class docutils literal notranslate"><span class="pre">AirQuality</span></code></a>) -
+Air quality response object.</li>
+<li>humidity (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity" title="sensirion_i2c_svm40.response_types.Humidity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Humidity</span></code></a>) -
+Humidity response object.</li>
+<li>temperature (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature" title="sensirion_i2c_svm40.response_types.Temperature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Temperature</span></code></a>) -
+Temperature response object.</li>
+<li>raw_voc_ticks (int) -
+Raw VOC output ticks as read from the SGP sensor.</li>
+<li>raw_humidity (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Humidity" title="sensirion_i2c_svm40.response_types.Humidity"><code class="xref py py-class docutils literal notranslate"><span class="pre">Humidity</span></code></a>) -
+Humidity response object.</li>
+<li>raw_temperature (<a class="reference internal" href="#sensirion_i2c_svm40.response_types.Temperature" title="sensirion_i2c_svm40.response_types.Temperature"><code class="xref py py-class docutils literal notranslate"><span class="pre">Temperature</span></code></a>) -
+Temperature response object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.wrapped.</code><code class="descname">Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements</code><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Temperature Offset For Rht Measurements I²C Command</p>
+<p>Gets the T-Offset for the temperature compensation of the RHT algorithm.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.interpret_response"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdGetTemperatureOffsetForRhtMeasurements.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the interpreted data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Temperature offset in degrees celsius.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements">
+<em class="property">class </em><code class="descclassname">sensirion_i2c_svm40.commands.wrapped.</code><code class="descname">Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements</code><span class="sig-paren">(</span><em>t_offset</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set Temperature Offset For Rht Measurements I²C Command</p>
+<p>Sets the T-Offset for the temperature compensation of the RHT algorithm.</p>
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>t_offset</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/sensirion_i2c_svm40/commands/wrapped.html#Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>t_offset</strong> (<em>float</em>) – Temperature offset in degrees celsius.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements.interpret_response">
+<code class="descname">interpret_response</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#sensirion_i2c_svm40.commands.wrapped.Svm40I2cCmdSetTemperatureOffsetForRhtMeasurements.interpret_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates the CRCs of the received data from the device and returns
+the data with all CRCs removed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>bytes</em>) – Received raw bytes from the read operation.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The received bytes, or None if there is no data received.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bytes or None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://sensirion.github.io/python-i2c-driver/api.html#sensirion_i2c_driver.errors.I2cChecksumError" title="(in Sensirion I²C Python Driver v1.0.1)"><strong>I2cChecksumError</strong></a> – If a received CRC was wrong.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quick Start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2020 Sensirion AG, Switzerland
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+<div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        <span class="fa fa-book"> Other Versions</span>
+        v: 0.1.1
+        <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+        <dl>
+            <dt>Tags</dt>
+            <dd><a href="../0.1.0/api.html">0.1.0</a></dd>
+            <dd><a href="api.html">0.1.1</a></dd>
+        </dl>
+        <dl>
+            <dt>Branches</dt>
+            <dd><a href="../master/api.html">master</a></dd>
+        </dl>
+    </div>
+</div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
